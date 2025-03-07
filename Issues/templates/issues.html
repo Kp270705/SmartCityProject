@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue - CityConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 1024px) {
+            #map {
+                height: 100%;
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-city text-2xl"></i>
+                <span class="font-bold text-xl">CityConnect</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="hover:text-blue-200 transition">Home</a>
+                <a href="#" class="hover:text-blue-200 transition">Dashboard</a>
+                <a href="#" class="hover:text-blue-200 transition">My Reports</a>
+                <a href="#" class="hover:text-blue-200 transition">Help</a>
+            </div>
+            <div>
+                <a href="#" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition">My Account</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Report an Issue</h1>
+            <p class="text-gray-600">Provide details about the problem and pinpoint its exact location on the map</p>
+        </div>
+        
+        <div class="lg:grid lg:grid-cols-2 gap-8">
+            <!-- Map Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6 lg:mb-0">
+                <h2 class="text-xl font-semibold mb-4">Location</h2>
+                <p class="text-gray-600 mb-4">Click on the map to mark the exact location of the issue</p>
+                
+                <div id="map" class="mb-4"></div>
+                
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="block font-medium text-gray-700">Latitude:</span>
+                        <span id="latitude-display" class="text-gray-600">Not selected</span>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-gray-700">Longitude:</span>
+                        <span id="longitude-display" class="text-gray-600">Not selected</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Section -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Issue Details</h2>
+                
+                <form action="/issues" method="post" enctype="multipart/form-data" class="space-y-4">
+                    <!-- Hidden fields for coordinates -->
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                    
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Issue Category</label>
+                        <select 
+                            id="category" 
+                            name="category" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                        >
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="pothole">Pothole</option>
+                            <option value="sanitation">Sanitation</option>
+                            <option value="water">Water Supply</option>
+                            <option value="streetlight">Street Light</option>
+                            <option value="parks">Parks & Green Spaces</option>
+                            <option value="traffic">Traffic Signal</option>
+                            <option value="transport">Public Transport</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="issue" class="block text-sm font-medium text-gray-700 mb-1">Issue Description</label>
+                        <textarea 
+                            name="issue" 
+                            id="issue" 
+                            rows="4" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Please describe the issue in detail..."
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="attachment" class="block text-sm font-medium text-gray-700 mb-1">Photos (optional)</label>
+                        <input 
+                            type="file" 
+                            id="attachment" 
+                            name="attachment"
+                            accept="image/*"
+                            multiple
+                            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                        >
+                        <p class="text-xs text-gray-500 mt-1">You can upload up to 3 photos (max 5MB each)</p>
+                    </div>
+                    
+                    <div>
+                        <label for="priority" class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                        <select 
+                            id="priority" 
+                            name="priority" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            required
+                        >
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="contact" class="block text-sm font-medium text-gray-700 mb-1">Contact Number (optional)</label>
+                        <input 
+                            type="tel" 
+                            id="contact" 
+                            name="contact"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="For follow-up questions if needed"
+                        >
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button 
+                            type="submit" 
+                            id="submit-button"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled
+                        >
+                            Submit Issue
+                        </button>
+                        <p id="location-warning" class="text-red-500 text-sm mt-2">Please mark the location on the map</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i class="fas fa-city text-xl"></i>
+                <span class="font-bold text-lg">CityConnect</span>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; 2025 CityConnect. All rights reserved. </p>
+            <span>By Cyber Knights</span>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([40.7128, -74.0060], 13); // Default to NYC coordinates
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+        }).addTo(map);
+        
+        // Variables to store marker and coordinates
+        let marker;
+        let latitude, longitude;
+        
+        // Try to get user's current location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    
+                    // Center map on user's location
+                    map.setView([latitude, longitude], 15);
+                    
+                    // Add a marker at user's location
+                    marker = L.marker([latitude, longitude], {draggable: true}).addTo(map);
+                    updateCoordinates(latitude, longitude);
+                    
+                    // Enable submit button
+                    document.getElementById('submit-button').disabled = false;
+                    document.getElementById('location-warning').style.display = 'none';
+                    
+                    // Update coordinates when marker is dragged
+                    marker.on('dragend', function(event) {
+                        const position = marker.getLatLng();
+                        updateCoordinates(position.lat, position.lng);
+                    });
+                },
+                (error) => {
+                    console.log("Error getting location: ", error);
+                }
+            );
+        }
+        
+        // Handle map clicks to set/update marker
+        map.on('click', function(e) {
+            latitude = e.latlng.lat;
+            longitude = e.latlng.lng;
+            
+            // If marker already exists, move it, otherwise create it
+            if (marker) {
+                marker.setLatLng(e.latlng);
+            } else {
+                marker = L.marker(e.latlng, {draggable: true}).addTo(map);
+                
+                // Update coordinates when marker is dragged
+                marker.on('dragend', function(event) {
+                    const position = marker.getLatLng();
+                    updateCoordinates(position.lat, position.lng);
+                });
+            }
+            
+            updateCoordinates(latitude, longitude);
+            
+            // Enable submit button
+            document.getElementById('submit-button').disabled = false;
+            document.getElementById('location-warning').style.display = 'none';
+        });
+        
+        // Function to update coordinate displays and form values
+        function updateCoordinates(lat, lng) {
+            // Update display
+            document.getElementById('latitude-display').textContent = lat.toFixed(6);
+            document.getElementById('longitude-display').textContent = lng.toFixed(6);
+            
+            // Update hidden form fields
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
+        }
+    </script>
+</body>
+</html>

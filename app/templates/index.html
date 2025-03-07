@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityConnect - Smart Citizen Feedback Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-city text-2xl"></i>
+                <span class="font-bold text-xl">CityConnect</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#features" class="hover:text-blue-200 transition">Features</a>
+                <a href="#how-it-works" class="hover:text-blue-200 transition">How It Works</a>
+                <a href="/issues" class="hover:text-blue-200 transition">Report Issues</a>
+                <a href="#track" class="hover:text-blue-200 transition">Track Progress</a>
+            </div>
+            <div>
+                <a href="/issues" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-gradient-to-r from-blue-700 to-blue-500 text-white">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Making Our City Better Together</h1>
+                <p class="text-xl mb-8">Report civic issues, track resolution progress, and provide feedback on city services - all in one secure platform.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="/issues" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium text-center hover:bg-blue-50 transition shadow-md">Report an Issue</a>
+                    <a href="#track" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-medium text-center hover:bg-white hover:text-blue-600 transition">Track Progress</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Platform Features</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                    <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bullhorn text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Report Issues</h3>
+                    <p class="text-gray-600">Easily report potholes, sanitation problems, water supply issues, and other civic concerns with photos and location data.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                    <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Track Progress</h3>
+                    <p class="text-gray-600">Monitor the status of your reported issues in real-time with transparent updates from city officials.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                    <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-comments text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Provide Feedback</h3>
+                    <p class="text-gray-600">Share your thoughts on city services and contribute to improving our community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Create Account</h3>
+                    <p class="text-gray-600">Sign up with your email and verify your identity as a resident.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Report Issue</h3>
+                    <p class="text-gray-600">Submit details about the problem with photos and location.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Track Progress</h3>
+                    <p class="text-gray-600">Receive updates as city officials address your reported issue.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Provide Feedback</h3>
+                    <p class="text-gray-600">Rate the resolution and help improve city services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Issues Section -->
+    <section id="issues" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Common Issues You Can Report</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-road text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Potholes</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-trash text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Sanitation</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-tint text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Water Supply</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Street Lights</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-tree text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Parks & Green Spaces</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-traffic-light text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Traffic Signals</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-bus text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Public Transport</h3>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                        <i class="fas fa-plus text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-medium">Other Issues</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="track" class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to make our city better?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of residents who are already using CityConnect to report issues and track progress.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="/issues" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition shadow-md">Report an Issue</a>
+                <a href="/track" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition">Track Existing Issues</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Transparency -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Security & Transparency</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 border border-gray-200 rounded-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Secure Platform</h3>
+                    <p class="text-gray-600">Your data is encrypted and protected with industry-standard security protocols.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-lock text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Data Protection</h3>
+                    <p class="text-gray-600">Advanced measures prevent data tampering and ensure the integrity of all reports.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-pie text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Transparent Reporting</h3>
+                    <p class="text-gray-600">Public dashboards show aggregated data on issues and resolution times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-city text-2xl"></i>
+                        <span class="font-bold text-xl">CityConnect</span>
+                    </div>
+                    <p class="text-gray-400">Making our city better through citizen engagement and transparent governance.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#issues" class="hover:text-white transition">Report Issues</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Download our mobile app:</p>
+                    <div class="flex space-x-3 mt-2">
+                        <a href="#" class="bg-gray-700 px-3 py-2 rounded flex items-center space-x-2 hover:bg-gray-600 transition">
+                            <i class="fab fa-apple"></i>
+                            <span>iOS</span>
+                        </a>
+                        <a href="#" class="bg-gray-700 px-3 py-2 rounded flex items-center space-x-2 hover:bg-gray-600 transition">
+                            <i class="fab fa-android"></i>
+                            <span>Android</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 CityConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

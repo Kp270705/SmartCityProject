@@ -5,7 +5,7 @@ from app.models import Issue
 
 @issues.route("/issues", methods=["GET", "POST"])
 def get_issues():
-    
+
     if request.method == 'POST':
         latitude = request.form.get('latitude')
         longitude = request.form.get('longitude')
@@ -14,7 +14,7 @@ def get_issues():
         priority = request.form.get('priority')
         contact = request.form.get('contact')
 
-        issueobj = Issue(issue_description, latitude, longitude, category, priority, contact)
+        issueobj = Issue(category, priority, issue_description, contact, latitude, longitude)
 
         db.session.add(issueobj)
         db.session.commit()

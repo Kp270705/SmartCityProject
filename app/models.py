@@ -19,20 +19,39 @@ class Issue(db.Model):
     __bind_key__ = 'issues'
     
     id = db.Column(db.Integer, primary_key=True)
-    issue = db.Column(db.String(500), nullable=False)  # Description of the issue
-    attachment = db.Column(db.String(255), nullable=True)  # File path for uploaded image
+    category = db.Column(db.String(50), nullable=False)  # Store category of issue
     priority = db.Column(db.Enum('low', 'medium', 'high', 'critical', name="priority_levels"), default="medium")
+    issue = db.Column(db.String(500), nullable=False)  # Description of the issue
+    contact = db.Column(db.String(15), nullable=True)  # Optional contact number
     latitude = db.Column(db.Float, nullable=False)  # Store latitude
     longitude = db.Column(db.Float, nullable=False)  # Store longitude
-    category = db.Column(db.String(50), nullable=False)  # Store category of issue
-    contact = db.Column(db.String(15), nullable=True)  # Optional contact number
+    attachment = db.Column(db.String(255), nullable=True)  # File path for uploaded image
     created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
 
-    def __init__(self, issue, latitude, longitude, category, attachment=None, priority="medium", contact=None):
+    def __init__(self, category, priority, issue, contact, latitude, longitude, attachment=None):
+        self.category = category
+        self.priority = priority
         self.issue = issue
+        self.contact = contact
         self.latitude = latitude
         self.longitude = longitude
-        self.category = category
         self.attachment = attachment
-        self.priority = priority
-        self.contact = contact
+
+
+class Register(db.Model):
+    __tablename__ = 'register'
+    __bind_key__ = 'register'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    userEmail = db.Column(db.String(150), nullable=False)
+    userName = db.Column(db.String(50), nullable=False)  
+    userPassword = db.Column(db.String(50), nullable=False)
+    userType = db.Column(db.String(500), nullable=False)  
+    created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+
+    def __init__(self, userEmail, userName, userPassword, userType):
+        self.userEmail = userEmail
+        self.userName = userName
+        self.userPassword = userPassword
+        self.userType = userType
+        

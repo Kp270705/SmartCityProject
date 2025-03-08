@@ -84,11 +84,22 @@
     <div class="auth-container">
         <h1>Register to Your Account</h1>
         <form action="/register" method="post" enctype="multipart/form-data">
-            <label for="username">Username</label>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="username">Username(only first name)</label>
             <input type="text" name="username" id="username" required>
             
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
+
+            <label for="">User or admin</label>
+            <select name="userType" id="certificateType" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
             
             <button type="submit">Register</button>
         </form>

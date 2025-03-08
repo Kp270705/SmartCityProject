@@ -11,7 +11,9 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # In-memory DB (not persistent)
 app.config['SQLALCHEMY_BINDS'] = {
     'users': 'sqlite:///users.db',
-    'issues': 'sqlite:///issues.db'
+    'issues': 'sqlite:///issues.db',
+    'register': 'sqlite:///register.db',
+    # 'login': 'sqlite:///login.db',
 }
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -27,7 +29,7 @@ def allowed_file(filename):
 # ✅ Initialize database
 db = SQLAlchemy(app)
 
-# ✅ Import models AFTER initializing db
+# ✅ Import models AFTER initializing 
 from app import models
 
 # ✅ Create tables for all binds

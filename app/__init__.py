@@ -17,15 +17,6 @@ app.config['SQLALCHEMY_BINDS'] = {
 }
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-UPLOAD_FOLDER = 'Uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv', 'xlsx'}
-app.secret_key = uuid.uuid4().hex
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# check file extension:
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 # ✅ Initialize database
 db = SQLAlchemy(app)
 

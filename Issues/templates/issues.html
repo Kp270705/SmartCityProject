@@ -35,7 +35,8 @@
             <div class="hidden md:flex space-x-6">
                 <a href="/" class="hover:text-blue-200 transition">Home</a>
                 <a href="#" class="hover:text-blue-200 transition">Dashboard</a>
-                <a href="#" class="hover:text-blue-200 transition">My Reports</a>
+                <!-- <a href="#" class="hover:text-blue-200 transition">My Reports</a> -->
+                <a href="{{ url_for('issues.my_issues') }}">View My Issues</a>
                 <a href="#" class="hover:text-blue-200 transition">Help</a>
             </div>
             <div>

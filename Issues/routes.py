@@ -22,3 +22,12 @@ def get_issues():
 
 
     return render_template("issues.html")
+
+
+@issues.route("/myissues")
+def my_issues():
+    # Fetch issues from the database
+    issues_list = Issue.query.all()
+
+    # Pass data to myIssues.html
+    return render_template("myIssues.html", issues=issues_list)
